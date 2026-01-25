@@ -8,6 +8,9 @@ import underArmourLogo from "@/assets/brands/under_armour.svg";
 import gucciLogo from "@/assets/brands/gucci.png";
 import versaceLogo from "@/assets/brands/versace.png";
 import burberryLogo from "@/assets/brands/burberry.png";
+import sapphireLogo from "@/assets/brands/sapphire.png";
+import jOfficialLogo from "@/assets/brands/j_official.webp";
+import khaadiLogo from "@/assets/brands/khaadi.jpg";
 
 const brandsData = [
   { name: "Chanel", src: chanelLogo },
@@ -16,6 +19,9 @@ const brandsData = [
   { name: "Versace", src: versaceLogo },
   { name: "Partner", src: brand2Logo },
   { name: "Burberry", src: burberryLogo },
+  { name: "Sapphire", src: sapphireLogo },
+  { name: "J.", src: jOfficialLogo },
+  { name: "Khaadi", src: khaadiLogo },
 ];
 
 // Create rows by repeating the brands to ensure we have enough items for the marquee
