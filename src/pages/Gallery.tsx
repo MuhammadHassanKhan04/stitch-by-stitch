@@ -73,11 +73,10 @@ const Gallery = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 rounded-sm font-medium transition-all duration-300 ${
-                  activeTab === tab.id
+                className={`px-6 py-3 rounded-sm font-medium transition-all duration-300 ${activeTab === tab.id
                     ? "bg-gradient-gold text-primary-foreground shadow-gold"
                     : "bg-secondary text-foreground hover:bg-muted"
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>
@@ -100,18 +99,24 @@ const Gallery = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-sm"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden bg-charcoal">
+                  {/* Image: Visible by default, fades out on hover */}
                   <img
                     src={image.src}
                     alt={image.caption}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:opacity-0"
                   />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                  <p className="font-serif text-lg text-primary-foreground">
-                    {image.caption}
-                  </p>
+
+                  {/* Text Overlay: Hidden by default, reveals on hover */}
+                  <div className="absolute inset-0 flex items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-gold/90 scale-95 group-hover:scale-100">
+                    <div className="space-y-4">
+                      <div className="w-12 h-0.5 bg-charcoal/30 mx-auto" />
+                      <p className="font-serif text-xl md:text-2xl font-bold text-charcoal leading-tight">
+                        {image.caption}
+                      </p>
+                      <div className="w-12 h-0.5 bg-charcoal/30 mx-auto" />
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
