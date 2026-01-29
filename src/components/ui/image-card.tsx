@@ -20,36 +20,30 @@ export function ImageCard({ image, title, description, className = "", variant =
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5 }}
-        className={`group relative overflow-hidden rounded-sm h-[300px] md:h-[350px] bg-charcoal border border-white/10 ${className}`}
+        className={`group relative overflow-hidden rounded-sm h-[300px] md:h-[450px] bg-charcoal border border-white/10 ${className}`}
       >
-        {/* Text Content (Visible by default, fades out on hover) */}
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-6 text-center transition-opacity duration-500 group-hover:opacity-0 bg-charcoal">
-          <h3 className="font-serif text-2xl md:text-3xl font-bold text-gold mb-3">
-            {title}
-          </h3>
-          {description && (
-            <p className="text-ivory/70 text-sm md:text-base leading-relaxed max-w-xs">
-              {description}
-            </p>
-          )}
-          <div className="mt-6 w-12 h-1 bg-white/10 rounded-full" />
-        </div>
-
-        {/* Image (Hidden by default, fades in on hover) */}
-        <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out">
+        {/* Image (Visible by default) */}
+        <div className="absolute inset-0 z-10 transition-transform duration-700 ease-in-out group-hover:scale-110">
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-transparent to-transparent opacity-80" />
+          {/* Default overlay to make it look premium */}
+          <div className="absolute inset-0 bg-charcoal/20 group-hover:bg-charcoal/60 transition-colors duration-500" />
+        </div>
 
-          {/* Text overlaid on image (Optional, essentially same as default card but purely for hover state) */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
-            <h3 className="font-serif text-xl font-semibold text-white mb-1 shadow-black DROP-SHADOW-MD">
-              {title}
-            </h3>
-          </div>
+        {/* Text Content (Hidden by default, reveals on hover) */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-all duration-500 ease-out transform translate-y-8 group-hover:translate-y-0">
+          <h3 className="font-serif text-3xl md:text-4xl font-bold text-gold mb-4 leading-tight">
+            {title}
+          </h3>
+          {description && (
+            <p className="text-ivory/90 text-base md:text-lg leading-relaxed max-w-sm">
+              {description}
+            </p>
+          )}
+          <div className="mt-8 w-16 h-1 bg-gold rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 delay-200" />
         </div>
       </motion.div>
     );
